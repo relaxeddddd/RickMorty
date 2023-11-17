@@ -48,7 +48,7 @@ final class CharacterDetailView: UIView {
   
   private func createTableView() -> UITableView {
     let tableView = UITableView()
-    tableView.register(CharacterDetailCollectionViewCell.self, forCellReuseIdentifier: CharacterDetailCollectionViewCell.cellIdentifer)
+    tableView.register(CharacterDetailTableViewCell.self, forCellReuseIdentifier: CharacterDetailTableViewCell.cellIdentifer)
     tableView.translatesAutoresizingMaskIntoConstraints = false
     return tableView
   }

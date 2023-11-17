@@ -1,12 +1,11 @@
 import UIKit
 import Photos
 
-final class CharacterDetailViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+final class CharacterDetailViewController: UIViewController {
   
   // MARK: - Private properties
   private let viewModel: CharacterDetailViewViewModel
   private let detailView: CharacterDetailView
-  private let cell: CharacterDetailCollectionViewCell?
   private let goBackLabel: UILabel = {
     let title = UILabel()
     title.font = .systemFont(ofSize: 18, weight: .bold)
@@ -52,7 +51,6 @@ final class CharacterDetailViewController: UIViewController, UIImagePickerContro
   init(viewModel: CharacterDetailViewViewModel) {
     self.viewModel = viewModel
     self.detailView = CharacterDetailView(frame: .zero, viewModel: viewModel)
-    self.cell = CharacterDetailCollectionViewCell(frame: .zero)
     super.init(nibName: nil, bundle: nil)
   }
   
@@ -132,8 +130,8 @@ extension CharacterDetailViewController: UITableViewDelegate, UITableViewDataSou
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let viewModels = viewModel.information[indexPath.row]
     guard let cell = tableView.dequeueReusableCell(
-      withIdentifier: CharacterDetailCollectionViewCell.cellIdentifer,
-      for: indexPath) as? CharacterDetailCollectionViewCell else { return UITableViewCell() }
+      withIdentifier: CharacterDetailTableViewCell.cellIdentifer,
+      for: indexPath) as? CharacterDetailTableViewCell else { return UITableViewCell() }
     cell.selectionStyle = .none
     cell.delegateVC = self
     cell.configure(with: viewModels)

@@ -6,11 +6,11 @@ protocol PresentVCDelegate: AnyObject {
     func present(_ viewControllerToPresent: UIViewController, animated flag: Bool, completion: (() -> Void)?)
 }
 
-/// CharacterDetailCollectionViewCell
-final class CharacterDetailCollectionViewCell: UITableViewCell {
+/// CharacterDetailTableViewCell
+final class CharacterDetailTableViewCell: UITableViewCell {
   
   // MARK: - CellID
-  static let cellIdentifer = "CharacterInfoCollectionViewCell"
+  static let cellIdentifer = "CharacterInfoTableViewCell"
   
   // MARK: - Public properties
   weak var delegateVC: PresentVCDelegate?
@@ -341,7 +341,7 @@ final class CharacterDetailCollectionViewCell: UITableViewCell {
 }
 
 // MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
-extension CharacterDetailCollectionViewCell: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension CharacterDetailTableViewCell: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
     if let selectedImage = info[.originalImage] as? UIImage {
        characterImageView.image = selectedImage
